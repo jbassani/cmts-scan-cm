@@ -16,4 +16,4 @@
 > sudo yum install php php-snmp
 
 **Execução do script**
-- php scan.php <IP DO CMTS> <COMUNIDADE SNMP DO CMTS>
+- php scan.php IP-CMTS COMUNIDADE-SNMP-CMTS
