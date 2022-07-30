@@ -13,7 +13,7 @@
 > sudo apt install php php-snmp
 
 **Configuração do ambiente no Linux - CentOS**
-> sudo yum install php php-snmp
+> yum install php php-snmp
 
 **Execução do script**
 - php scan.php IP-CMTS COMUNIDADE-SNMP-CMTS
