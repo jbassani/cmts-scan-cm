@@ -1,5 +1,5 @@
 # Scanear terminais em CMTS
-> Script para coletar terminais sincronizados no CMTS e depois coletar informações de cada terminal.
+> Script para coletar lista de terminais sincronizados em um equipamento CMTS e posteriormente coletar informações de cada terminal.
 
 **Pré-requisitos**
 - <a href="https://www.php.net/">PHP</a>
