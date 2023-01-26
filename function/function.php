@@ -22,11 +22,6 @@ function getMac($ip)
     return strtoupper($mac);
 }
 
-function convertTimestamp($texto) {
-    $texto = preg_replace('/</', '', $texto);
-    return substr($texto, 0,4)."-".substr($texto, 4,2)."-".substr($texto, 6,2)." : ".substr($texto, 8,2).":".substr($texto, 10,2).":".substr($texto, 12,2);
-}
-
 function convertMacHexDec($cm_mac) {
     $cm_dec[0] = hexdec(substr($cm_mac,0,2));
     $cm_dec[1] = hexdec(substr($cm_mac,2,2));
@@ -57,9 +52,9 @@ function getSnmptableindex($cm_macdecimal, $ip_cmts) {
 function getMib($ip_cmts, $TableIndex) {
     
     $ip_cm = snmpget($ip_cmts, $community_cmts, '1.3.6.1.2.1.10.127.1.3.3.1.3.'.$TableIndex);               // IP do terminal
-    $snr_up = (snmpget($ip_cmts, $community_cmts, '1.3.6.1.2.1.10.127.1.3.3.1.13.'.$TableIndex) * 0.1);      // SNR UP
+    $snr_up = (snmpget($ip_cmts, $community_cmts, '1.3.6.1.2.1.10.127.1.3.3.1.13.'.$TableIndex) * 0.1);     // SNR UP
     $porta_up = snmpget($ip_cmts, $community_cmts, '1.3.6.1.2.1.10.127.1.3.3.1.5.'.$TableIndex);            // Porta upstream 
-    $porta_down = snmpget($ip_cmts, $community_cmts, '1.3.6.1.2.1.2.2.1.2.'.$porta_up);                      // Porta downstream
+    $porta_down = snmpget($ip_cmts, $community_cmts, '1.3.6.1.2.1.2.2.1.2.'.$porta_up);                     // Porta downstream
     $cmts_desc = snmpget($ip_cmts, $community_cmts, 'SNMPv2-MIB::sysDescr.0');                              // Informação sobre o CMTS
     if($cmts_desc){
         $pos_vendor = (strpos($cmts_desc, 'VENDOR') + 7);
@@ -76,13 +71,13 @@ function getMib($ip_cmts, $TableIndex) {
 }
 
 function getTimeexecutation($start = null) {
-    $mtime = microtime();                       // Pega o microtime
-    $mtime = explode(' ',$mtime);               // Quebra o microtime
-    $mtime = $mtime[1] + $mtime[0];             // Soma as partes montando um valor inteiro
+    $mtime = microtime();                           // Pega o microtime
+    $mtime = explode(' ',$mtime);                   // Quebra o microtime
+    $mtime = $mtime[1] + $mtime[0];                 // Soma as partes montando um valor inteiro
     if ($start == null) {
-        return $mtime;                          // Se o parametro não for especificado, retorna o mtime atual
+        return $mtime;                              // Se o parametro não for especificado, retorna o mtime atual
     } else {
-        $tempo  = round($mtime - $start, 2);    // Se o parametro for especificado, retorna o tempo de execução
+        $tempo  = round($mtime - $start, 2);        // Se o parametro for especificado, retorna o tempo de execução
         if ($tempo > 60)
             $tempo = $tempo/60;
         return $tempo;

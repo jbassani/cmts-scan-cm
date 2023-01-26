@@ -10,7 +10,7 @@ require_once "./function/function.php";
 if (!isset($argv[1]) && !isset($argv[2]))  
 {
     echo "Para executar o script execute o comando abaixo:";
-    echo "php ".$argv[0]." IP-DO-CTMS COMMUNITY-SNMP";
+    echo "php ".$argv[0]." IP-CTMS SNMP-COMMUNITY";
     exit();
 }
 
@@ -31,12 +31,10 @@ $arquivo = './lista_terminais.json'         // Caminho e nome do arquivo a ser s
 
 snmp_set_quick_print(1);
 
-
 $cm_ip = snmpwalk($ip_cmts, $community_cmts, $oid_ip);  // Consulta lista de IPs conectados no CMTS
 $linha = array();
         
 for($x=0; $x < count($cm_ip) ; $x++)
-//for($x=0; $x < 15; $x++)
 {        
     $ip = $cm_ip[$x];
     $mac = getMac($ip);
