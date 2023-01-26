@@ -15,5 +15,5 @@
 **Configuração do ambiente no Linux - CentOS**
 > yum install php php-snmp
 
-**Execução do script**
-- php scan.php IP-CMTS COMUNIDADE-SNMP-CMTS
+## Execução do script
+php scan.php IP-CMTS COMUNIDADE-SNMP-CMTS
